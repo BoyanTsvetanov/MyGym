@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link rel="stylesheet" href="training-plans.css">
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo"> <i class="fas fa-dumbbell"></i> fitlife</a>
+    
+        <nav class="navbar">
+            <i class="fas fa-times"></i>
+            <a href="index.html">home</a>
+            <a href="training-plans.html">programs</a>
+            <a href="#services">schedule</a>
+            <a href="#pricing">pricing</a>
+            <a href="#team">login</a>
+            <a href="#register">register</a>
+        </nav>
+    
+        <div id="menu" class="fas fa-bars"></div>
+    </header>
+
+            <section class="beginners">
+                <div class="content">
+                    <div class="plans-container">
+                        <!-- Card 1 -->
+                        <div class="plan-card">
+                            <img src="promo1.jpg" alt="Promo Image 1" class="plan-pic">
+                            <div class="plan-info">
+                                <h3>Beginner Plan</h3>
+                                <p>Credits: 10</p>
+                            </div>
+                        </div>
+            
+                        <!-- Card 2 -->
+                        <div class="plan-card">
+                            <img src="promo2.jpg" alt="Promo Image 2" class="plan-pic">
+                            <div class="plan-info">
+                                <h3>Intermediate Plan</h3>
+                                <p>Credits: 20</p>
+                            </div>
+                        </div>
+            
+                        <!-- Card 3 -->
+                        <div class="plan-card">
+                            <img src="promo3.jpg" alt="Promo Image 3" class="plan-pic">
+                            <div class="plan-info">
+                                <h3>Advanced Plan</h3>
+                                <p>Credits: 30</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const navbar = document.querySelector('.navbar');
+        const menuIcon = document.getElementById('menu');
+        const closeIcon = document.querySelector('.fa-times');
+
+        // Function to toggle the navbar
+        function toggleNavbar() {
+            navbar.classList.toggle('active');
+        }
+
+        // Event listener for the menu icon
+        menuIcon.addEventListener('click', function() {
+            toggleNavbar();
+        });
+
+        // Event listener for the close icon
+        closeIcon.addEventListener('click', function() {
+            toggleNavbar();
+        });
+    });
+    </script>
+</body>
+</html>

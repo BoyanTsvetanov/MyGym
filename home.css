@@ -1,0 +1,713 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@font-face {
+    font-family: 'MARKER-NO2HUN';
+    src: 
+         url('/fonts/MARKER-NO2HUN.otf') format('opentype'); /* Added .otf format */
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'DOC-STR';
+    src: url('/fonts/docallismeonstreet.otf') format('opentype'); /* Added .otf format */
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+:root{
+    --primary: #0c1118;
+    --secondary: #F3100C;
+    --white: #fff;
+    --box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+}
+html{
+    scroll-behavior: smooth;
+}
+
+*{
+    font-family: 'Bebas Neue', sans-serif;
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    outline: none; border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    list-style: none;
+    transition: .2s linear;
+}
+
+  /* Default scrollbar styling */
+::-webkit-scrollbar {
+    width: 6px; /* Default scrollbar width */
+    transition: width 0.3s ease; /* Smooth transition for width change */
+}
+
+/* Track (the part of the scrollbar that doesn't move) */
+::-webkit-scrollbar-track {
+    background: #ff0000; /* Light background for the scrollbar track */
+    transition: background-color 0.3s ease; /* Smooth transition for track background color */
+}
+
+
+/* Handle (the draggable part of the scrollbar) */
+::-webkit-scrollbar-thumb {
+    background: #6c214d;
+    transition: background-color 0.3s ease; /* Smooth transition for thumb background color */
+}
+
+/* Hover effect for the scrollbar handle */
+::-webkit-scrollbar-thumb:hover {
+    background: #45234a; /* Darker shade from your gradient */
+}
+
+/* Full-width effect when hovering over the scrollbar area */
+::-webkit-scrollbar:hover {
+    width: 12px; /* Wider scrollbar on hover */
+}
+
+
+body{
+    background: 
+        url('/images/Fitness_Graffiti_Wall-_Regular_Scale\ \(1\).jpg') no-repeat center center fixed, 
+        /* linear-gradient(to top right, #ff9900 30%, #660066 82%); */
+        linear-gradient(to right, #ab2c2c, #911e43, #6c214d, #45234a, #231f39, #231f39, #231f39, #231f39, #45234a, #6c214d, #911e43, #ab2c2c);
+    background-blend-mode: multiply;
+    background-size: cover;
+    color: var(--white);
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 9%;
+    /* background: linear-gradient(180deg, rgba(0,0,0,1) 22%, rgba(0,0,0,0.748) 48%, rgba(0,0,0,0.505) 65%, rgba(0,0,0,0.25) 80%, rgba(0,0,0,0.001) 100%); */
+}
+
+.header.active {
+    /* background: #040608; */
+    background-image: linear-gradient(to right, #ab2c2c, #911e43, #6c214d, #45234a, #231f39, #231f39, #231f39, #231f39, #45234a, #6c214d, #911e43, #ab2c2c);
+    padding: 0.25rem 9%;
+    box-shadow: var(--box-shadow);
+}
+
+.header .logo {
+    font-size: 2.5rem;
+    font-weight: bolder;
+    color: var(--white);
+}
+
+/* Always show the menu icon */
+#menu {
+    font-size: 2.5rem;
+    margin-left: 1.7rem;
+    color: var(--white);
+    cursor: pointer;
+    display: inline-block;
+}
+
+/* Navbar style for the sidebar */
+.navbar {
+    position: fixed;
+    top: 0;
+    right: -25vw; /* Start hidden off-screen */
+    width: 25vw;
+    height: 100vh; /* Full height */
+    backdrop-filter:  saturate(3) blur(15px) brightness(30%);
+    /* background: #040608; */
+    /* border-left: 0.1rem solid rgba(255, 255, 255, 0.7); */
+    z-index: 9999;
+    transition: right 0.5s ease; /* Smooth transition */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2rem;
+}
+
+/* Show the navbar when it's active */
+.navbar.active {
+    right: 0; /* Slide in from the right */
+}
+
+.navbar a {
+    display: block;
+    margin: 0.5rem ;
+    color: white;
+    /* background-color: rgba(0, 0, 0, 1); */
+    /* border-radius: 10px; */
+    padding-top: 10%;
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 1400;
+    /* font-family: "MARKER-NO2HUN", sans-serif; */
+    text-shadow: 0px 0px 1px #0c1118;
+    /* -webkit-text-stroke-width: 1px;
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke-color: black; */
+    text-align: center;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: var(--secondary);
+}
+
+.fa-times {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: var(--white);
+    display: inline;
+}
+.fa-times:hover,
+#menu:hover{
+    scale: 1.2;
+    color: var(--secondary);
+}
+
+/* .header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background-color: lime; 
+    scale: 0 1;
+    animation: scroll-watcher linear;
+    animation-timeline: scroll();
+}
+@keyframes scroll-watcher{
+    to{ scale: 1 1;}
+} */
+
+
+.content {
+    width: 100%; /* Maximum width for large screens */
+    padding-inline: 9%;
+    margin: 0 auto;
+}
+
+
+
+.home {
+    background: 
+        url('/images/artwork6.png') no-repeat center center fixed,  /* Main header background with fixed positioning */
+        linear-gradient(90deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));  /* Dark overlay */
+    background-blend-mode: multiply;
+    min-height: 110vh;
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-attachment: fixed;
+    transition: background-image 2s ease-in-out; /* Smooth transition for background image */
+}
+
+
+
+.home .content {
+    max-width: 55rem;
+    /* border: solid; */
+    /* border-radius: 20px; */
+    /* box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.6); */
+    text-align: start;
+    padding-inline: 9%;
+    margin: 0 0;
+    z-index: 1;
+    position: sticky;
+}
+.muscle-icon {
+    height: 0.75em;
+    width: auto; /* Maintains aspect ratio */
+    vertical-align: middle; /* Aligns with the middle of the text line */
+    fill: red; /* Ensures the SVG path is red */
+}
+
+.home .content h3 {
+    backdrop-filter: grayscale(100%) blur(2px);
+    font-size: 5.5rem;
+    /* font-family: "MARKER-NO2HUN", sans-serif; */
+    color: var(--white);
+    text-transform: uppercase;
+    border-radius: 10px;
+    padding-inline-start: 2%;
+    line-height: 1;
+}
+.home .content h3:hover > span {
+    font-size: 7.25rem; /* Increase font size for hover effect */
+}
+
+.home .content h3 span {
+    color: var(--secondary);
+    font-family: "MARKER-NO2HUN", sans-serif;
+    font-style: italic;
+    font-size: larger;
+    font-stretch: expanded;
+    text-transform: uppercase;
+}
+
+.home .content p {
+    font-size: 1.4rem;
+    color: var(--white);
+    padding: 1rem 0;
+    line-height: 1.5;
+}
+
+#home-content > * {
+    opacity: 0; /* Start hidden */
+    transform: translateY(20px); /* Start slightly below */
+    animation: fadeInUp 1.5s ease-in-out forwards;
+}
+
+#home-content > *:nth-child(1) {
+    animation-delay: 0.3s; /* Delay for the first child (h3) */
+}
+
+#home-content > *:nth-child(2) {
+    animation-delay: 0.6s; /* Delay for the second child (p) */
+}
+
+#home-content > *:nth-child(3) {
+    animation-delay: 0.9s; /* Delay for the third child (a.btn) */
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0); /* End at original position */
+    }
+}
+
+.training-plans{
+    width: 100%;
+    height: 50vh;
+}
+
+.training-plans .content {
+    width: 80vw; /* Adjust width as needed */
+    height: 100%; /* Ensure it takes the full height of the parent container */
+    position: relative; /* Position relative for absolute children */
+    border-radius: 5px;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-image: linear-gradient(120deg, rgba(255,255,255,0.2) 10%, rgba(0,0,0,1) 90%);
+    display: flex; /* Align children horizontally */
+    flex-direction: row; /* Horizontal layout */
+    justify-content: space-between; /* Space out children evenly */
+    padding-inline: 2%;
+    padding-block: 3%;
+    z-index: 1;
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
+}
+
+.training-plans .info {
+    width: 75%; /* Takes up half of the content width */
+    padding: 2%; /* Optional padding */
+    position: absolute; /* Position relative for better control */
+    right: 0;
+}
+
+
+.training-plans .plans {
+    width: 25%; /* Takes up the other half of the .content width */
+    position: absolute; /* Absolute positioning to overlap content */
+    left: 0; /* Align to the left */
+    bottom: 0; /* Align to the bottom */
+    z-index: 0; /* Positioned below .info */
+}
+
+.plans img {
+    position: absolute; /* Absolute positioning for precise control */
+    left: 0; /* Start from the left of the container */
+    bottom: 0; /* Start from the bottom of the container */
+    width: 100%; /* Maintain aspect ratio */
+    height: auto; /* Maintain aspect ratio */
+    max-width: none; /* Allow scaling larger than container */
+    max-height: none; /* Allow scaling larger than container */
+    transform: scale(1.6); /* Scale slightly larger */
+    transform-origin: bottom left; /* Scale from the bottom left corner */
+}
+
+
+.training-plans .content:hover {
+    /* background-color: #F3100C; */
+    transform: scale(1.1);
+    
+}
+
+.training-plans > *{
+    opacity: 0; /* Start hidden */
+    transform: translateY(20px); /* Start slightly below */
+    animation: fadeInUp linear forwards;
+    animation-timeline: view();
+    animation-range: 50px 200px;
+}
+/* .muscles{
+    height: 45vh;
+    width: 100%;
+    background: rgba(255,255,255,0.6);
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+} */
+
+/* #container3D {
+    max-width: 30%; 
+    aspect-ratio: 16/9;
+    height: 25%; 
+    position: relative;
+    top: 0;
+    left: 0;
+  } */
+  
+  /* #container3D canvas {
+    max-width: 100%;
+    height: 100%;
+  } */
+
+  /* .box-container{
+    background: transparent;
+    top: 0;
+    width: 70%;
+    justify-content: space-around;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+   */
+
+   /* General styling for the sections */
+.services {
+    padding: 3rem 0; /* Vertical padding for spacing */
+    
+}
+
+
+
+/* Styling for the Services section */
+.services .service-box {
+    background: #fff; /* White background for each service box */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 2rem; /* Padding inside each box */
+    text-align: center; /* Center-align text and icons */
+    margin: 1rem 0; /* Margin between boxes */
+}
+
+.services .service-icon {
+    font-size: 3rem; /* Larger icon for emphasis */
+    color: #333; /* Dark color for contrast */
+    margin-bottom: 1rem; /* Space between icon and title */
+}
+
+.services h3 {
+    font-size: 1.5rem; /* Title size */
+    color: #0c1118;
+    margin: 0.5rem 0; /* Space above and below the title */
+}
+
+.services p {
+    font-size: 1rem; /* Description text size */
+    color: #666; /* Lighter text color */
+}
+
+.service-box:hover p,
+.service-box:hover h3,
+.service-box:hover .service-icon{
+    color: white;
+}
+
+.service-box::before {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 8px;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-size: cover; /* Cover the entire service box */
+    background-position: center; /* Center the background image */
+    transform: scaleX(0); /* Start with the effect scaled down */
+    transform-origin: bottom right; /* Origin point for scaling */
+    z-index: -1; /* Places the pseudo-element behind the service box content */
+    transition: transform 0.3s ease; /* Smooth transition for scaling */
+}
+
+/* Specific images for each service box */
+.service-box:nth-child(4)::before {
+    background: url('images/Smyrna-Nutrition\ \(1\).jpg') no-repeat center center,
+    rgba(0, 0, 0, 0.4); 
+    background-blend-mode: multiply;
+    background-size: cover; 
+}
+
+.service-box:nth-child(2)::before {
+    background: url('images/The+Benefits+Of+Personal+Training+At+Home\ \(1\).jpg') no-repeat center center ,
+    rgba(0, 0, 0, 0.4); 
+    background-blend-mode: multiply;
+    background-size: cover;
+}
+
+.service-box:nth-child(3)::before {
+    background: url('images/exploring-the-benefits-of-group-fitness-classes.jpg') no-repeat center center ,
+    rgba(0, 0, 0, 0.4); 
+    background-blend-mode: multiply;
+    background-size: cover;
+}
+
+/* Hover effect for each service box */
+.service-box:hover {
+    transform: scale(1.05); /* Slightly increase the size of the hovered box */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+/* Hover effect for the pseudo-element */
+.service-box:hover::before {
+    transform: scaleX(1); /* Expand the effect to full width */
+    transform-origin: bottom left; /* Change origin point for scaling */
+}
+
+.service-box , .testimonials .content > * {
+    opacity: 0; /* Start hidden */
+    transform: translateY(20px); /* Start slightly below */
+    animation: fadeInUp linear forwards;
+    animation-timeline: view();
+    animation-range: 50px 200px;
+}
+
+
+
+/* Styling for the Testimonials section */
+.testimonials .testimonial-box {
+    background: #fff; /* White background for testimonial box */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 2rem; /* Padding inside each box */
+    text-align: center; /* Center-align text */
+    margin: 1rem 0; /* Margin between boxes */
+}
+
+.testimonials .testimonial-text {
+    font-size: 1rem; /* Testimonial text size */
+    color: #333; /* Dark text color for readability */
+    margin-bottom: 1rem; /* Space between text and name */
+}
+
+.testimonials h4 {
+    font-size: 1.2rem; /* Size for the client name */
+    color: #999; /* Lighter color for the name */
+}
+
+
+
+
+.footer{
+    background-color: rgba(0, 0, 0, 0.7);
+    font-family: "MARKER-NO2HUN", sans-serif;
+}
+
+.footer .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 1rem;
+    border-top: .1rem solid rgba(255, 255, 255, .2);
+    padding: 3%;
+}
+
+.footer .box-container .box h3{
+    font-size: 2.2rem;
+    padding: 1rem 0;
+    color: var(--secondary);
+    font-family: "MARKER-NO2HUN", sans-serif;
+}
+
+.footer .box-container .box p{
+    font-size: 1.5rem;
+    padding: 1rem 0;
+    line-height: 2;
+    /* font-family: "MARKER-NO2HUN", sans-serif; */
+}
+
+.footer .box-container .box a{
+    display: block;
+    font-size: 1.4rem;
+    padding: 1rem 0;
+    color: var(--white);
+    /* font-family: "MARKER-NO2HUN", sans-serif; */
+}
+
+.footer .box-container .box a i{
+    color: var(--secondary);
+    padding-right: .5rem;
+}
+
+.footer .box-container .box a:hover{
+    color: var(--secondary);
+}
+
+.footer .box-container .box a:hover i{
+    padding-right: 1rem;
+}
+
+.footer .share{
+    padding-top: 2rem;
+    text-align: center;
+}
+
+.footer .share a{
+    font-size: 2rem;
+    height: 5rem;
+    width: 5rem;
+    line-height: 5rem;
+    color: var(--secondary);
+    border: .1rem solid var(--primary);
+    margin: .3rem;
+    border-radius: 50%;
+}
+
+.footer .share a:hover{
+    color: var(--white);
+    background: var(--secondary);
+    transform: rotate(360deg);
+}
+
+.footer .credit{
+    border-top: .1rem solid rgba(255, 255, 255, .2);
+    font-size: 2rem;
+    margin-top: 2.5rem;
+    padding: 1rem;
+    padding-top: 2rem;
+    text-align: center;
+    color: var(--white);
+}
+
+.footer .credit span{
+    color: var(--secondary);
+}
+
+@media (max-width: 991px){
+    html{
+        font-size: 55%;
+        font-weight: lighter;
+    }
+}
+
+@media (max-width: 768px){
+
+    #menu{
+        display: inline-block;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 0;
+        right: -100%; /* Start hidden on the right */
+        width: 300px; /* Adjust width as needed */
+        height: 100vh; /* Full height */
+        /* background: #040608; */
+        /* border-left: .1rem solid rgba(255, 255, 255, .7); */
+        z-index: 9999; /* Ensure it's on top of everything */
+        transition: right 0.5s ease; /* Smooth transition */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 2rem;
+    }
+
+    .navbar.active {
+        right: 0; /* Slide in from the right */
+    }
+
+    .navbar a {
+        display: block;
+        margin: 2rem 0;
+        color: white; /* Ensure links are visible on the dark background */
+        text-decoration: none; /* Remove underline for links */
+    }
+
+    .fa-times {
+        transform: rotate(180deg);
+        position: absolute;
+        top: 1rem; /* Adjust as needed */
+        right: 1rem; /* Adjust as needed */
+        font-size: 2.5rem;
+        cursor: pointer; /* Indicate it's clickable */
+        color: var(--secondary); /* Ensure it is visible */
+        display: inline;
+    }
+
+    #home{
+        min-height: 100vh;
+    }
+
+    .training-plans{
+        width: 100%;
+        height: 25vh;
+    }
+    
+    .training-plans .content {
+        width: 80vw; /* Adjust width as needed */
+        height: 100%; /* Ensure it takes the full height of the parent container */
+        position: relative; /* Position relative for absolute children */
+        border-radius: 5px;
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        background-image: linear-gradient(120deg, rgba(255,255,255,0.2) 10%, rgba(0,0,0,1) 90%);
+        display: flex; /* Align children horizontally */
+        flex-direction: row; /* Horizontal layout */
+        justify-content: space-between; /* Space out children evenly */
+        padding-inline: 2%;
+        padding-block: 3%;
+        z-index: 1;
+        transform-style: preserve-3d;
+        transition: transform 0.3s ease;
+    }
+    
+    .training-plans .info {
+        width: 50%; /* Takes up half of the content width */
+        padding: 2%; /* Optional padding */
+        position: absolute; /* Position relative for better control */
+        right: 0;
+    }
+    .training-plans .info p{
+        font-size: smaller;
+        hyphens: auto;
+    }
+    
+    
+    .training-plans .plans {
+        width: 40%; /* Takes up the other half of the .content width */
+        position: absolute; /* Absolute positioning to overlap content */
+        left: 0; /* Align to the left */
+        bottom: 0; /* Align to the bottom */
+        z-index: 0; /* Positioned below .info */
+    }
+    
+    
+    .training-plans .content:hover {
+        /* background-color: #F3100C; */
+        transform: scale(1.1);
+        
+    }
+    
+    .training-plans > *{
+        opacity: 0; /* Start hidden */
+        transform: translateY(20px); /* Start slightly below */
+        animation: fadeInUp linear forwards;
+        animation-timeline: view();
+        animation-range: 50px 200px;
+    }
+}
+
+@media (max-width: 450px){
+    html{
+        font-size: 50%;
+    }
+}
