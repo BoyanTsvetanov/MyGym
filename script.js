@@ -81,13 +81,13 @@ window.addEventListener('scroll', function() {
 });
 
 const images = [
-    "/images/artwork.png",
-    "/images/artwork1.png",
-    "/images/artwork2.png",
-    "/images/artwork3.png",
-    "/images/artwork4.png",
-    "/images/artwork6.png",
-    "/images/artwork8.jpg"
+    "./images/artwork.png",
+    "./images/artwork1.png",
+    "./images/artwork2.png",
+    "./images/artwork3.png",
+    "./images/artwork4.png",
+    "./images/artwork6.png",
+    "./images/artwork8.jpg"
 ];
 
 let currentIndex = 0;

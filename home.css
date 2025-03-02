@@ -70,7 +70,7 @@ html{
 
 body{
     background: 
-        url('/images/Fitness_Graffiti_Wall-_Regular_Scale\ \(1\).jpg') no-repeat center center fixed, 
+        url('./images/Fitness_Graffiti_Wall-_Regular_Scale\ \(1\).jpg') no-repeat center center fixed, 
         /* linear-gradient(to top right, #ff9900 30%, #660066 82%); */
         linear-gradient(to right, #ab2c2c, #911e43, #6c214d, #45234a, #231f39, #231f39, #231f39, #231f39, #45234a, #6c214d, #911e43, #ab2c2c);
     background-blend-mode: multiply;
