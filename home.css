@@ -3,14 +3,14 @@
 @font-face {
     font-family: 'MARKER-NO2HUN';
     src: 
-         url('/fonts/MARKER-NO2HUN.otf') format('opentype'); /* Added .otf format */
+         url('./fonts/MARKER-NO2HUN.otf') format('opentype'); /* Added .otf format */
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: 'DOC-STR';
-    src: url('/fonts/docallismeonstreet.otf') format('opentype'); /* Added .otf format */
+    src: url('./fonts/docallismeonstreet.otf') format('opentype'); /* Added .otf format */
     font-weight: normal;
     font-style: normal;
     font-display: swap;
